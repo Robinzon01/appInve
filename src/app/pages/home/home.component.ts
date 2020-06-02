@@ -1,36 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Usuario } from '../../models/usuario';
-import { GelocationService } from '../../services/gelocation.service';
 import { Router } from '@angular/router';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
-  constructor(private serviGelo: GelocationService, private router: Router) {}
-
-  ngOnInit() {
-    this.mensajeGelocalizacion();
+  usuario = new Usuario();
+  constructor(private router: Router) {
+    this.usuario = JSON.parse(sessionStorage.getItem('usuario'));
+    this.getMensaje(this.usuario);
   }
-  public mensajeGelocalizacion(): void {
-      let usuario = new Usuario();
-      usuario = JSON.parse(sessionStorage.getItem('usuario'));
-      this.serviGelo.getGelocation(usuario).subscribe(
-        rest => {
-          // console.log(rest);
-          if (rest.longitud == null || rest.latitud == null ) {
-              Swal.fire(`Hola ${rest.usuario}, necesita actualizar su geolocalización.`);
-              this.router.navigateByUrl('/gelocation'); // NAVEGA HACIA GEOLOCALIZACION
-          }
 
-        }
-      );
-  }
+  ngOnInit() {}
+
   // METODO QUE NOS BRINDA EL MENSAJE DE BIENVENIDA
-  public getMensaje() {
+  public getMensaje(usuario: Usuario) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -44,7 +31,7 @@ export class HomeComponent implements OnInit {
     });
     Toast.fire({
       icon: 'success',
-      title: sessionStorage.getItem('mesaje')
+      title: `Bienvenido ${usuario.username}`
     });
   }
 

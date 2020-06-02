@@ -1,0 +1,30 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Descripcón</th>
+            <th scope="col">medida</th>
+            <th scope="col">Tip/Afecta</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Familia</th>
+            <th scope="col">Catalogo</th>
+            <th scope="col">Linea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let arti of articulos">
+            <th>{{arti.idArti.noArti}}</th>
+            <td>{{arti.descripcion}}</td>
+            <td>{{arti.medida}}</td>
+            <td>{{arti.tipoAfectacion}}</td>
+            <td>{{arti.marca}}</td>
+            <td>{{arti.arinfa.descripcion}}</td>
+            <td>{{arti.catalogo.descripcion}}</td>
+            <td>{{arti.linea.descripcion}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-pagi-rgta *ngIf="paginador" [paginador]="paginador"></app-pagi-rgta>
+  </div>        

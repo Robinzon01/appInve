@@ -14,6 +14,8 @@ import { CompanyComponent } from './pages/company/company.component';
 import { PagiRgtaComponent } from './pages/pagi-rgta/pagi-rgta.component';
 import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
+import { RegistroComponent } from './pages/registro/registro.component';
+import { LartiComponent } from './pages/larti/larti.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { UsuarioComponent } from './pages/usuario/usuario.component';
     CabezeraComponent,
     CompanyComponent,
     PagiRgtaComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    RegistroComponent,
+    LartiComponent
   ],
   imports: [
     BrowserModule,
