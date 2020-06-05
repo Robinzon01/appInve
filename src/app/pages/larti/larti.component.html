@@ -1,28 +1,31 @@
-<div class="table-responsive">
-    <table class="table">
+<div class="table-responsive m-3">
+    <table class="table table-hover table-sm">
         <thead>
-          <tr>
-            <th scope="col">Id</th>
+          <tr class="table-success">
+            <th scope="col">ID</th>
             <th scope="col">Descripcón</th>
-            <th scope="col">medida</th>
-            <th scope="col">Tip/Afecta</th>
+            <th scope="col">Medida</th>
             <th scope="col">Marca</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Familia</th>
-            <th scope="col">Catalogo</th>
-            <th scope="col">Linea</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Comprometido-G</th>
+            <th scope="col">Disponible</th>
+            <!-- <th scope="col">Linea</th> -->
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let arti of articulos">
-            <th>{{arti.idArti.noArti}}</th>
-            <td>{{arti.descripcion}}</td>
-            <td>{{arti.medida}}</td>
-            <td>{{arti.tipoAfectacion}}</td>
-            <td>{{arti.marca}}</td>
-            <td>{{arti.arinfa.descripcion}}</td>
-            <td>{{arti.catalogo.descripcion}}</td>
-            <td>{{arti.linea.descripcion}}</td>
+            <!-- <th>{{arti.idArti.noArti}}</th> -->
+            <th>{{arti[0]}}</th>
+            <td>{{arti[1]}}</td>
+            <td>{{arti[2]}}</td>
+            <td>{{arti[3]}}</td>
+            <td>S/{{arti[4]}}</td>
+            <td>{{arti[5]}}</td>
+            <td>{{arti[6]}}</td>
+            <td>{{arti[5] - arti[6]}}</td>
+            <!-- <td>{{arti.linea.descripcion}}</td> -->
+             
           </tr>
         </tbody>
       </table>

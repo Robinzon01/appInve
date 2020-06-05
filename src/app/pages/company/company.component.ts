@@ -36,15 +36,10 @@ export class CompanyComponent implements OnInit {
   onSumit() {
     if (this.formulario.invalid) {
       return Object.values(this.formulario.controls).forEach( control => {
-        /* if ( control instanceof FormGroup ){
-           Object.values( control.controls ).forEach( cont => cont.markAllAsTouched() );
-        } */
         control.markAsTouched();
       });
     }
-    console.log(this.formulario.value);
     sessionStorage.setItem('cia', this.formulario.get('company').value);
-    // sessionStorage.setItem('rs', comp.razonSocial);
     this.router.navigateByUrl('/home'); // NAVEGA HACIA EL HOME
   }
   // METODO QUE NOS PERMITE SELECCIONAR LA COMPAÑIA

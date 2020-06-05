@@ -21,15 +21,18 @@ export class LartiComponent implements OnInit {
       let usu = new Usuario();
       usu = JSON.parse(sessionStorage.getItem('usuario'));
       this.serviArti.getPagArti(usu, page).subscribe( response => {
-          // this.usuarios = response.content as Usuario[];
-          console.log(response.content);
+         // console.log(response.content);
+         // console.warn(this.getPrecioArti('01', '101308'));
           this.articulos = response.content;
           this.paginador = response;
         });
       }
     );
   }
-  // METODO QUE NOS TRAE TODOS LOS ARTICULOS DE 15 EN 15
-
-
+  // PRECIO DEL ARTICULO
+  /*
+  public getPrecioArti(cia: string, arti: string): string {
+    return this.serviArti.getPrecioArti(cia, arti).subscribe;
+  }
+  */
 }

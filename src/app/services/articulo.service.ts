@@ -15,7 +15,16 @@ export class ArticuloService {
   public getPagArti(usuario: Usuario, page: number): Observable<any> {
     return this.http.get<any>(this.other.getUrl() + `/arti/list/page/${usuario.cia}/${page}`).pipe(
       map(rest => {
-        return rest;
+         // console.log(rest.content);
+         return rest;
+      })
+    );
+  }
+  // PRECIO DEL ARTICULO
+  public getPrecioArti( cia: string, arti: string): Observable<string> {
+    return this.http.get<string>(this.other.getUrl() + `/arti/precio/${cia}/${arti}`).pipe(
+      map(rest => {
+         return rest;
       })
     );
   }
