@@ -1,3 +1,43 @@
+<div class="col-md-12 m-2">
+  <div class="row">
+    <div class="col-md-12 m-3">
+        <app-cabezera></app-cabezera>
+    </div>
+</div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-7">
+          <form class="formBuscaArti" [formGroup]="formulario" (ngSubmit)="guardar()">
+            <mat-form-field class="imputBuscarArti">
+              <input class="imputBuscarArti" type="text"
+                    placeholder="Buscar articulos"
+                    aria-label="Number"
+                    matInput
+                    [formControl]="myControl"
+                    [matAutocomplete]="auto"
+                    formControlName="item">
+                   <!--  (keyup)="applyFilter($event)"> -->
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="mostrarNombre" (optionSelected)="seleccionarItem($event)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option.descripcion}}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            
+          </form>
+        </div>
+        <div class="col-md-2">
+          <div class="btnArtiBuscar">
+            <button type="submit" mat-fab color="primary">
+              <mat-icon>search</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="table-responsive m-3">
     <table class="table table-hover table-sm">
         <thead>
@@ -10,7 +50,7 @@
             <th scope="col">Stock</th>
             <th scope="col">Comprometido</th>
             <th scope="col">Disponible</th>
-            <!-- <th scope="col">Linea</th> -->
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -24,9 +64,12 @@
             <td>{{arti[5]}}</td>
             <td>{{arti[6]}}</td>
             <td>{{arti[5] - arti[6]}}</td>
-            <!-- <td>{{arti.linea.descripcion}}</td> -->             
+            <td></td>
           </tr>
         </tbody>
       </table>
+      <div class="alert alert-warning" role="alert" *ngIf="articulos.length==0">
+         El item no tiene stock
+      </div>
       <app-pagi-rgta *ngIf="paginador" [paginador]="paginador"></app-pagi-rgta>
-  </div>        
+</div>        

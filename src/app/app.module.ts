@@ -16,7 +16,15 @@ import { TokenInterceptor } from './interceptor/TokenInterceptor';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { RegistroComponent } from './pages/registro/registro.component';
 import { LartiComponent } from './pages/larti/larti.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { BartiComponent } from './pages/larti/barti/barti.component';
+
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -29,14 +37,21 @@ import { LartiComponent } from './pages/larti/larti.component';
     PagiRgtaComponent,
     UsuarioComponent,
     RegistroComponent,
-    LartiComponent
+    LartiComponent,
+    BartiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }],
   bootstrap: [AppComponent]

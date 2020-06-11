@@ -1,0 +1,31 @@
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.tp-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+ }
+ .tp-full-width {
+    width: 100%;
+ }
+
+
+ .formBuscaArti {
+   width: 100%;
+ }
+ 
+ .imputBuscarArti {
+   width: 100%;
+ }
+
+ .imputBuscarArti{
+   width: 100%;
+ }
+
+ .btnArtiBuscar {
+   display: flex;
+   justify-content: center;
+   width: 120px;
+ }
