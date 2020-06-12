@@ -4,6 +4,7 @@ import { ArticuloService } from '../../../services/articulo.service';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from '../../../models/usuario';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-darti',
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 export class DartiComponent implements OnInit {
   idArit: Idarti;
   articulo: any;
+  private fotoSelec: File;
   constructor(private servArti: ArticuloService, private activateRote: ActivatedRoute) { }
 
   ngOnInit() {
@@ -30,7 +32,19 @@ export class DartiComponent implements OnInit {
       }
     });
   }
-
+  // SELECCIONAR FOTO 
+  public seleccionarFoto(event) {
+    this.fotoSelec = event.target.files[0];
+    console.log(this.fotoSelec);
+  }
+  // SUBIR FOTO
+  public subirFoto() {
+    this.servArti.subirFoto(this.fotoSelec,this.articulo.idArti.cia, this.articulo.idArti.noArti).
+    subscribe(data => {
+      this.articulo = data;
+      Swal.fire('La foto se ha subido completamente !');
+    });
+  }
 
 
 }

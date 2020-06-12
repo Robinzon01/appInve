@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OtherService } from './other.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 import { Usuario } from '../models/usuario';
-
+import Swal from 'sweetalert2'
 @Injectable({
   providedIn: 'root'
 })
@@ -17,9 +17,13 @@ export class ArticuloService {
     formD.append("archivo", archivo);
     formD.append("cia", cia);
     formD.append("cod", cod);
-    return this.http.post<any>(this.other.getUrl() + `/arti/upload/${formD}`).pipe(
-      map(),
-      
+    return this.http.post(`${this.other.getUrl()}/arti/upload`,formD).pipe(
+      map( (restponse : any) => restponse.articulo as any ),
+      catchError( e => {
+        console.error(e.error.mensaje);
+        Swal.fire(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
     );
 
   }
