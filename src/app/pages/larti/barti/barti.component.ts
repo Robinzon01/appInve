@@ -47,8 +47,8 @@ export class BartiComponent implements OnInit {
   }
 
   seleccionarItem(event: MatAutocompleteModule): void {
-    let item = event.option.value as any;
-    console.log(item);
+    /* let item = event.option.value as any;
+    console.log(item); */
   }
 
 }

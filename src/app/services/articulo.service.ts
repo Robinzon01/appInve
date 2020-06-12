@@ -11,6 +11,26 @@ import { Usuario } from '../models/usuario';
 export class ArticuloService {
 
   constructor(private http: HttpClient, private other: OtherService) { }
+  // SUBIR IMAGEN
+  public subirFoto(archivo: File, cia: string, cod: string): Observable<any> {
+    let formD = new FormData();
+    formD.append("archivo", archivo);
+    formD.append("cia", cia);
+    formD.append("cod", cod);
+    return this.http.post<any>(this.other.getUrl() + `/arti/upload/${formD}`).pipe(
+      map(),
+      
+    );
+
+  }
+  // METODO QUE NOS PERMITE TRAER TODOS LOS ARTICULOS CON SUS PRECIOS
+  public getShowArti(cia: string, cod: string): Observable<any> {
+    return this.http.get<any>(this.other.getUrl() + `/arti/show/${cia}/${cod}`).pipe(
+      map(rest => {
+         return rest;
+      })
+    );
+  }
 
   // METODO QUE NOS PERMITE TRAER TODOS LOS ARTICULOS CON SUS PRECIOS
   public getPagArti(usuario: Usuario, page: number): Observable<any> {

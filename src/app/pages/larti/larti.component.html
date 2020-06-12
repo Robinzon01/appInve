@@ -64,7 +64,12 @@
             <td>{{arti[5]}}</td>
             <td>{{arti[6]}}</td>
             <td>{{arti[5] - arti[6]}}</td>
-            <td></td>
+            <td>
+              <!-- <a mat-mini-fab color="accent" [routerLink]="['/articulo/show',{ cia:'01', cod: arti[0]} ]"> -->
+              <a mat-mini-fab color="accent" [routerLink]="['/articulo/show',arti[0]]">
+                <mat-icon>photo</mat-icon>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>

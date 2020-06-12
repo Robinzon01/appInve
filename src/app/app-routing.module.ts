@@ -8,6 +8,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CompanyComponent } from './pages/company/company.component';
 import { UsuarioComponent } from './pages/usuario/usuario.component';
 import { LartiComponent } from './pages/larti/larti.component';
+import { DartiComponent } from './pages/larti/darti/darti.component';
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'usuario',  component: UsuarioComponent },
   { path: 'articulo',  component: LartiComponent },
   { path: 'articulo/page/:page',  component: LartiComponent },
+  { path: 'articulo/show/:cod', component: DartiComponent },
   { path: 'usuario/page/:page', component: UsuarioComponent },
   { path: 'login'   , component: LoginComponent },
   { path: '**', redirectTo: 'login' }

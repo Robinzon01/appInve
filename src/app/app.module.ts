@@ -25,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BartiComponent } from './pages/larti/barti/barti.component';
 
 import {MatInputModule} from '@angular/material';
+import { DartiComponent } from './pages/larti/darti/darti.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import {MatInputModule} from '@angular/material';
     UsuarioComponent,
     RegistroComponent,
     LartiComponent,
-    BartiComponent
+    BartiComponent,
+    DartiComponent
   ],
   imports: [
     BrowserModule,

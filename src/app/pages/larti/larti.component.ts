@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {map, startWith, flatMap} from 'rxjs/operators';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatOption } from '@angular/material';
 
 @Component({
   selector: 'app-larti',
@@ -87,9 +88,9 @@ export class LartiComponent implements OnInit {
   }
 
   seleccionarItem(event: MatAutocompleteModule): void {
-    const item = event.option.value as any;
-    /* console.log(item.idArti.noArti);
-    console.log(item); */
+    /*
+    const item = event.option.values ;
+  
     this.actiRouter.paramMap.subscribe( params => {
       let page: number = +params.get('page');
       if (!page) { // SI NO EXISTE
@@ -103,6 +104,7 @@ export class LartiComponent implements OnInit {
         });
       }
     );
+    */
   }
 
   // PRECIO DEL ARTICULO
