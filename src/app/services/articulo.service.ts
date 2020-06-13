@@ -12,16 +12,22 @@ export class ArticuloService {
 
   constructor(private http: HttpClient, private other: OtherService) { }
   // SUBIR IMAGEN
-  public subirFoto(archivo: File, cia: string, cod: string): Observable<any> {
-    let formD = new FormData();
-    formD.append("archivo", archivo);
-    formD.append("cia", cia);
-    formD.append("cod", cod);
-    return this.http.post(`${this.other.getUrl()}/arti/upload`,formD).pipe(
-      map( (restponse : any) => restponse.articulo as any ),
-      catchError( e => {
-        console.error(e.error.mensaje);
-        Swal.fire(e.error.mensaje, e.error.error, 'error');
+  public subirFoto(archivo: File, cia, cod): Observable<any> {
+    let formData = new FormData();
+    formData.append("archivo", archivo);
+    formData.append("cia", cia);
+    formData.append("cod", cod);
+    return this.http.post(this.other.getUrl() + `/arti/upload`, formData).pipe(
+     /* map( response => {
+       return response;
+      } ), */
+      catchError(e => {
+        if (e.status == 400 || e.status == 500) {
+          return throwError(e);
+        }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
         return throwError(e);
       })
     );
